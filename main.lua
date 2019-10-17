@@ -40,9 +40,32 @@ wallMap = Map:new(walls)
 
 end
 
+
+
+
 function love.update(dt)
-  if love.keyboard.isDown('right') then
-    x = x + 1
+
+  function love.update(dt)
+    if love.keyboard.isDown('up') then
+      if collide:cc(x, y - 5, 64, 64) == false then
+        y = y - 5
+      end
+    end
+    if love.keyboard.isDown('down') then
+      if collide:cc(x, y + 5, 64, 64) == false then
+        y = y + 5
+      end
+    end
+    if love.keyboard.isDown('right') then
+      if collide:cc(x + 5, y, 64, 64) == false then
+        x = x + 5
+      end
+    end
+    if love.keyboard.isDown('left') then
+      if collide:cc(x - 5, y , 64, 64) == false then
+        x = x - 5
+      end
+    end
   end
   if love.keyboard.isDown('left') then
     x = x - 1
@@ -55,6 +78,10 @@ function love.update(dt)
   end
 
 end
+
+
+
+
 
 function love.draw()
     map:draw()
